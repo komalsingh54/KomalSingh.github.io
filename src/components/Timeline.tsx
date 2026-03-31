@@ -6,32 +6,32 @@ const experiences = [
     company: "TCS",
     client: "Asda Retail",
     role: "Solution Architect, Tech Lead",
-    tech: ["Cloud", "DevOps", "AI", "React", "Full Stack"],
-    highlight: "Leading digital transformation for UK's largest retailer",
+    tech: ["AWS", "Azure", "React", "Spring Boot", "Kubernetes", "GenAI", "Observability"],
+    highlight: "Leading digital transformation, cloud migration, and AI integration for UK's largest retailer",
   },
   {
     period: "2019 – 2024",
     company: "Publicis Sapient",
     client: null,
     role: "Tech Lead & Full Stack Developer",
-    tech: ["Cloud", "DevOps", "React", "Node", "Java"],
-    highlight: "Led cross-functional teams building enterprise platforms",
+    tech: ["React", "Next.js", "Node.js", "Java", "Docker", "Terraform", "Kafka"],
+    highlight: "Led cross-functional teams building enterprise platforms with micro-frontend architecture",
   },
   {
     period: "2017 – 2019",
     company: "To The New",
     client: null,
-    role: "Senior Full Stack Developer",
-    tech: ["React", "Node", "AWS", "Cloud Solutions"],
-    highlight: "Architected cloud-native solutions at scale",
+    role: "Senior Full Stack Developer & Cloud Architect",
+    tech: ["React", "Node.js", "AWS", "GraphQL", "MongoDB", "CI/CD"],
+    highlight: "Architected cloud-native solutions and automated deployment pipelines at scale",
   },
   {
     period: "2015 – 2017",
     company: "Gemalto (Thales)",
     client: null,
     role: "Full Stack Developer",
-    tech: ["React", "Node", "Java", "C/C++"],
-    highlight: "Built secure IoT and embedded solutions",
+    tech: ["React", "Node.js", "Java", "C/C++", "IoT", "Security"],
+    highlight: "Built secure IoT and embedded solutions for device authentication and encryption",
   },
 ];
 
@@ -67,7 +67,6 @@ export default function Timeline() {
               transition={{ delay: i * 0.15, duration: 0.6 }}
               className="relative flex mb-16 last:mb-0 group"
             >
-              {/* Timeline connector */}
               <div className="hidden md:flex flex-col items-center mr-8 shrink-0">
                 <div className="w-3 h-3 rounded-full bg-foreground border-4 border-background ring-2 ring-border z-10 group-hover:ring-foreground/30 transition-all duration-300" />
                 {i < experiences.length - 1 && (
@@ -75,7 +74,6 @@ export default function Timeline() {
                 )}
               </div>
 
-              {/* Card */}
               <motion.div
                 whileHover={{ y: -2 }}
                 className="flex-1 glass border-gradient rounded-2xl p-6 md:p-8 group-hover:bg-[hsl(var(--glass-hover))] transition-all duration-300"

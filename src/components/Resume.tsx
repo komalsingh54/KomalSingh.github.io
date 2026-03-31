@@ -5,15 +5,35 @@ import { Button } from "@/components/ui/button";
 const stats = [
   { icon: Briefcase, value: "11+", label: "Years Experience" },
   { icon: Building2, value: "4", label: "Companies" },
-  { icon: Award, value: "5+", label: "Certifications" },
-  { icon: Code2, value: "15+", label: "Technologies" },
+  { icon: Award, value: "6+", label: "Certifications" },
+  { icon: Code2, value: "25+", label: "Technologies" },
 ];
 
 const skills = [
-  { category: "Frontend", items: ["React", "TypeScript", "Next.js", "HTML/CSS", "Tailwind"] },
-  { category: "Backend", items: ["Node.js", "Java", "C/C++", "Python", "REST/GraphQL"] },
-  { category: "Cloud & DevOps", items: ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD"] },
-  { category: "Data & AI", items: ["Machine Learning", "GenAI", "Analytics", "SQL", "NoSQL"] },
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "React Native", "Flutter", "Micro-frontends", "HTML/CSS", "Tailwind"],
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Java", "Spring Boot", "C/C++", "Python", "REST", "GraphQL", "gRPC"],
+  },
+  {
+    category: "Cloud & DevOps",
+    items: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Helm", "Terraform", "CI/CD"],
+  },
+  {
+    category: "Data & Messaging",
+    items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "RabbitMQ", "SQL", "NoSQL"],
+  },
+  {
+    category: "AI & ML",
+    items: ["GenAI", "OpenAI", "LangChain", "RAG", "TensorFlow", "PyTorch", "ML Ops"],
+  },
+  {
+    category: "Architecture & Ops",
+    items: ["Microservices", "Observability", "Monitoring", "Tracing", "Product Delivery", "Problem Resolution"],
+  },
 ];
 
 export default function Resume() {
@@ -78,26 +98,28 @@ export default function Resume() {
         </div>
 
         {/* Skills */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {skills.map((group, i) => (
             <motion.div
               key={group.category}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 * i + 0.3 }}
+              transition={{ delay: 0.1 * i + 0.2 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="glass border-gradient rounded-2xl p-6"
             >
               <h3 className="font-display font-bold text-foreground mb-5 text-sm tracking-wide uppercase">{group.category}</h3>
-              <ul className="space-y-3">
+              <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <li key={item} className="text-sm text-muted-foreground flex items-center gap-3">
-                    <span className="w-1 h-4 rounded-full bg-foreground/15" />
+                  <span
+                    key={item}
+                    className="text-xs px-3 py-1.5 rounded-full bg-secondary/80 text-muted-foreground font-display"
+                  >
                     {item}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </div>

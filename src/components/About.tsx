@@ -1,11 +1,13 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { motion } from "framer-motion";
-import { Camera, Code, Cloud, Brain } from "lucide-react";
+import { Camera, Code, Cloud, Brain, Eye, Rocket } from "lucide-react";
 
 const highlights = [
-  { icon: Code, label: "Full Stack", desc: "React · Node · Java · C/C++", stat: "11+ yrs" },
-  { icon: Cloud, label: "Cloud & DevOps", desc: "AWS · Azure · CI/CD · IaC", stat: "6+ yrs" },
-  { icon: Brain, label: "AI & Data", desc: "ML pipelines · GenAI · Analytics", stat: "3+ yrs" },
+  { icon: Code, label: "Full Stack", desc: "React · Next.js · Node · Java · Spring Boot · C/C++", stat: "11+ yrs" },
+  { icon: Cloud, label: "Cloud & DevOps", desc: "AWS · Azure · GCP · K8s · Docker · Terraform", stat: "6+ yrs" },
+  { icon: Brain, label: "AI & GenAI", desc: "OpenAI · LangChain · RAG · TensorFlow · ML Ops", stat: "3+ yrs" },
+  { icon: Eye, label: "Observability", desc: "Monitoring · Logging · Tracing · Performance", stat: "Expert" },
+  { icon: Rocket, label: "Product Delivery", desc: "End-to-end delivery · Architecture · Problem solving", stat: "Leader" },
   { icon: Camera, label: "Photography", desc: "komal-singh.com", stat: "Hobby" },
 ];
 
@@ -14,7 +16,6 @@ export default function About() {
 
   return (
     <section id="about" className="py-32 relative noise">
-      {/* Decorative side text */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden xl:block">
         <p className="text-xs tracking-[0.4em] text-muted-foreground/30 uppercase rotate-[-90deg] origin-left whitespace-nowrap">
           About · Experience · Skills
@@ -23,7 +24,6 @@ export default function About() {
 
       <div ref={ref} className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Text */}
           <div>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -54,12 +54,18 @@ export default function About() {
               className="text-muted-foreground text-base leading-relaxed space-y-4"
             >
               <p>
-                I'm a Solution Architect based in London with over 11 years building
-                enterprise-grade software. From embedded systems at <span className="text-foreground font-medium">Gemalto/Thales</span> to
-                leading digital transformation at <span className="text-foreground font-medium">Publicis Sapient</span> and architecting
-                retail solutions at <span className="text-foreground font-medium">TCS for Asda</span>.
+                I'm a Solution Architect based in London with over 11 years of end-to-end
+                project delivery experience. From embedded systems at{" "}
+                <span className="text-foreground font-medium">Gemalto/Thales</span> to leading
+                digital transformation at{" "}
+                <span className="text-foreground font-medium">Publicis Sapient</span> and
+                architecting retail solutions at{" "}
+                <span className="text-foreground font-medium">TCS for Asda</span> — I bring
+                deep expertise across the full technology stack.
               </p>
               <p>
+                I specialise in cloud-native architecture, micro-frontends, observability,
+                and GenAI — driving product enhancement and problem resolution at scale.
                 Outside of code, I capture the world through my lens at{" "}
                 <a
                   href="https://komal-singh.com"
@@ -73,7 +79,6 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* Right: Cards */}
           <div className="grid grid-cols-2 gap-4">
             {highlights.map((h, i) => (
               <motion.div
@@ -83,9 +88,9 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i + 0.3, duration: 0.5 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="glass border-gradient rounded-2xl p-6 group cursor-default"
+                className="glass border-gradient rounded-2xl p-5 group cursor-default"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-3">
                   <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <h.icon className="text-foreground" size={20} />
                   </div>

@@ -3,7 +3,14 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const roles = ["Solution Architect", "Full Stack Developer", "Cloud Expert", "Tech Lead"];
+const roles = [
+  "Solution Architect",
+  "Full Stack Developer",
+  "Cloud Architect",
+  "Tech Lead",
+  "GenAI Engineer",
+  "DevOps Expert",
+];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -24,13 +31,11 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full glow-orb animate-float opacity-60" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full glow-orb animate-float opacity-40" style={{ animationDelay: "3s" }} />
-        {/* Decorative ring */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-border/30 rounded-full animate-spin-slow opacity-20" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-border/20 rounded-full animate-spin-slow opacity-15" style={{ animationDirection: "reverse" }} />
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Status badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -59,7 +64,6 @@ export default function Hero() {
           Singh
         </motion.h1>
 
-        {/* Rotating role */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -103,7 +107,6 @@ export default function Hero() {
           </Button>
         </motion.div>
 
-        {/* Scroll stat bar */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -112,8 +115,8 @@ export default function Hero() {
         >
           {[
             { num: "11+", label: "Years" },
-            { num: "4", label: "Companies" },
-            { num: "15+", label: "Technologies" },
+            { num: "25+", label: "Technologies" },
+            { num: "6+", label: "Certifications" },
           ].map((s) => (
             <div key={s.label} className="text-center">
               <p className="font-display text-2xl font-bold text-foreground">{s.num}</p>

@@ -1,13 +1,47 @@
+import { motion } from "framer-motion";
+
+const marqueeText = "REACT · NODE · JAVA · AWS · DEVOPS · AI · TYPESCRIPT · DOCKER · KUBERNETES · TERRAFORM · ";
+
 export default function Footer() {
   return (
-    <footer className="border-t border-border py-8">
-      <div className="container mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Komal Singh. All rights reserved.
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Built with React · Deployed on GitHub Pages
-        </p>
+    <footer className="border-t border-border relative overflow-hidden">
+      {/* Marquee */}
+      <div className="py-6 overflow-hidden opacity-[0.04]">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="font-display text-6xl font-bold tracking-tighter">
+            {marqueeText}{marqueeText}
+          </span>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-6">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Komal Singh
+          </p>
+          <div className="hidden sm:flex gap-4">
+            {[
+              { label: "LinkedIn", href: "https://linkedin.com/in/komalsingh54" },
+              { label: "GitHub", href: "https://github.com/komalsingh54" },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <a
+          href="#home"
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors font-display uppercase tracking-wider"
+        >
+          Back to top ↑
+        </a>
       </div>
     </footer>
   );

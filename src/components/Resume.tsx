@@ -1,4 +1,4 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
 import { Download, Briefcase, Building2, Award, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,65 +17,88 @@ const skills = [
 ];
 
 export default function Resume() {
-  const { ref, isVisible } = useScrollReveal();
-
   return (
-    <section id="resume" className="py-28 relative">
-      <div ref={ref} className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14">
+    <section id="resume" className="py-32 relative noise">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
           <div>
-            <p className={`text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 font-display"
+            >
               Resume
-            </p>
-            <h2 className={`font-display text-4xl md:text-5xl font-bold transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              Skills & <span className="text-gradient">Expertise</span>
-            </h2>
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05]"
+            >
+              <span className="font-display">Skills &</span>{" "}
+              <span className="font-serif italic text-gradient">Expertise</span>
+            </motion.h2>
           </div>
-          <Button
-            asChild
-            size="lg"
-            className={`mt-6 md:mt-0 rounded-full font-display transition-all duration-700 delay-200 ${isVisible ? "opacity-100" : "opacity-0"}`}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
           >
-            <a href="/resume-komal-singh.pdf" download>
-              <Download className="mr-2" size={18} />
-              Download PDF
-            </a>
-          </Button>
+            <Button
+              asChild
+              size="lg"
+              className="mt-6 md:mt-0 rounded-full font-display h-12 px-8"
+            >
+              <a href="/resume-komal-singh.pdf" download>
+                <Download className="mr-2" size={18} />
+                Download CV
+              </a>
+            </Button>
+          </motion.div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           {stats.map((s, i) => (
-            <div
+            <motion.div
               key={s.label}
-              className={`glass rounded-xl p-6 text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: `${300 + i * 100}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * i }}
+              className="glass border-gradient rounded-2xl p-6 text-center group"
             >
-              <s.icon className="mx-auto mb-2 text-muted-foreground" size={22} />
-              <p className="font-display text-3xl font-bold text-foreground">{s.value}</p>
-              <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-            </div>
+              <s.icon className="mx-auto mb-3 text-muted-foreground group-hover:text-foreground transition-colors" size={22} />
+              <p className="font-display text-4xl font-bold text-foreground">{s.value}</p>
+              <p className="text-xs text-muted-foreground mt-1 tracking-wide">{s.label}</p>
+            </motion.div>
           ))}
         </div>
 
-        {/* Skills grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Skills */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {skills.map((group, i) => (
-            <div
+            <motion.div
               key={group.category}
-              className={`glass rounded-xl p-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: `${500 + i * 100}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * i + 0.3 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="glass border-gradient rounded-2xl p-6"
             >
-              <h3 className="font-display font-semibold text-foreground mb-4">{group.category}</h3>
-              <ul className="space-y-2">
+              <h3 className="font-display font-bold text-foreground mb-5 text-sm tracking-wide uppercase">{group.category}</h3>
+              <ul className="space-y-3">
                 {group.items.map((item) => (
-                  <li key={item} className="text-sm text-muted-foreground flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-foreground/40 shrink-0" />
+                  <li key={item} className="text-sm text-muted-foreground flex items-center gap-3">
+                    <span className="w-1 h-4 rounded-full bg-foreground/15" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

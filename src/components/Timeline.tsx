@@ -1,90 +1,119 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
     period: "2024 – Present",
-    company: "TCS (Asda Retail)",
+    company: "TCS",
+    client: "Asda Retail",
     role: "Solution Architect, Tech Lead",
-    tech: "Cloud · DevOps · AI · React · Full Stack",
+    tech: ["Cloud", "DevOps", "AI", "React", "Full Stack"],
+    highlight: "Leading digital transformation for UK's largest retailer",
   },
   {
     period: "2019 – 2024",
     company: "Publicis Sapient",
+    client: null,
     role: "Tech Lead & Full Stack Developer",
-    tech: "Cloud · DevOps · React · Node · Java",
+    tech: ["Cloud", "DevOps", "React", "Node", "Java"],
+    highlight: "Led cross-functional teams building enterprise platforms",
   },
   {
     period: "2017 – 2019",
     company: "To The New",
-    role: "Senior Full Stack Developer & Cloud Architect",
-    tech: "React · Node · AWS · Cloud Solutions",
+    client: null,
+    role: "Senior Full Stack Developer",
+    tech: ["React", "Node", "AWS", "Cloud Solutions"],
+    highlight: "Architected cloud-native solutions at scale",
   },
   {
     period: "2015 – 2017",
     company: "Gemalto (Thales)",
+    client: null,
     role: "Full Stack Developer",
-    tech: "React · Node · Java · C/C++",
+    tech: ["React", "Node", "Java", "C/C++"],
+    highlight: "Built secure IoT and embedded solutions",
   },
 ];
 
 export default function Timeline() {
-  const { ref, isVisible } = useScrollReveal();
-
   return (
-    <section className="py-28 relative">
-      <div ref={ref} className="container mx-auto px-6">
-        <p className={`text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+    <section className="py-32 relative noise">
+      <div className="container mx-auto px-6">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 font-display"
+        >
           Experience
-        </p>
-        <h2 className={`font-display text-4xl md:text-5xl font-bold mb-16 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          Career <span className="text-gradient">Journey</span>
-        </h2>
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-20 leading-[1.05]"
+        >
+          <span className="font-display">Career</span>{" "}
+          <span className="font-serif italic text-gradient">Journey</span>
+        </motion.h2>
 
-        <div className="relative max-w-3xl mx-auto">
-          {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border" />
+        <div className="relative max-w-4xl mx-auto">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={exp.company}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              className="relative flex mb-16 last:mb-0 group"
+            >
+              {/* Timeline connector */}
+              <div className="hidden md:flex flex-col items-center mr-8 shrink-0">
+                <div className="w-3 h-3 rounded-full bg-foreground border-4 border-background ring-2 ring-border z-10 group-hover:ring-foreground/30 transition-all duration-300" />
+                {i < experiences.length - 1 && (
+                  <div className="w-px flex-1 bg-border mt-2" />
+                )}
+              </div>
 
-          {experiences.map((exp, i) => {
-            const isLeft = i % 2 === 0;
-            return (
-              <div
-                key={exp.company}
-                className={`relative flex items-start mb-12 last:mb-0 transition-all duration-700 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${200 + i * 150}ms` }}
+              {/* Card */}
+              <motion.div
+                whileHover={{ y: -2 }}
+                className="flex-1 glass border-gradient rounded-2xl p-6 md:p-8 group-hover:bg-[hsl(var(--glass-hover))] transition-all duration-300"
               >
-                {/* Dot */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-foreground border-2 border-background z-10 mt-2" />
-
-                {/* Content */}
-                <div
-                  className={`ml-10 md:ml-0 md:w-[calc(50%-2rem)] ${
-                    isLeft ? "md:pr-8 md:text-right" : "md:pl-8 md:ml-auto"
-                  }`}
-                >
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-foreground">
+                      {exp.company}
+                    </h3>
+                    {exp.client && (
+                      <p className="text-sm text-muted-foreground mt-0.5">
+                        Client: {exp.client}
+                      </p>
+                    )}
+                    <p className="text-sm text-muted-foreground mt-1">{exp.role}</p>
+                  </div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-display bg-secondary px-3 py-1 rounded-full whitespace-nowrap self-start">
                     {exp.period}
                   </span>
-                  <h3 className="font-display text-lg font-semibold text-foreground mt-1">
-                    {exp.company}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1">{exp.role}</p>
-                  <div className="flex flex-wrap gap-2 mt-3 md:justify-start">
-                    {isLeft && <div className="hidden md:block flex-1" />}
-                    {exp.tech.split(" · ").map((t) => (
-                      <span
-                        key={t}
-                        className="text-xs px-2 py-1 rounded-full glass text-muted-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-              </div>
-            );
-          })}
+
+                <p className="text-sm text-muted-foreground mb-4 italic">
+                  "{exp.highlight}"
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {exp.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs px-3 py-1 rounded-full bg-secondary/80 text-muted-foreground font-display"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 
 const categories = ["All", "Cloud", "Full Stack", "DevOps", "AI"];
 
@@ -10,42 +10,47 @@ const projects = [
     desc: "End-to-end digital transformation for Asda, modernising legacy systems to cloud-native microservices with AI-driven analytics.",
     tags: ["Cloud", "AI", "React", "DevOps"],
     category: ["Cloud", "AI", "DevOps"],
+    num: "01",
   },
   {
     title: "Enterprise Cloud Migration",
     desc: "Led migration of monolithic applications to AWS cloud infrastructure, implementing CI/CD pipelines and IaC with Terraform.",
     tags: ["AWS", "Terraform", "CI/CD", "Docker"],
     category: ["Cloud", "DevOps"],
+    num: "02",
   },
   {
     title: "Customer Experience Platform",
     desc: "Built a real-time personalisation engine for retail, processing millions of events daily for targeted recommendations.",
     tags: ["React", "Node.js", "Kafka", "ML"],
     category: ["Full Stack", "AI"],
+    num: "03",
   },
   {
     title: "IoT Security Framework",
     desc: "Developed secure embedded solutions at Gemalto/Thales for IoT device authentication and data encryption.",
     tags: ["C/C++", "Java", "Security", "IoT"],
     category: ["Full Stack"],
+    num: "04",
   },
   {
     title: "DevOps Automation Suite",
-    desc: "Designed and implemented automated deployment pipelines reducing release cycles from weeks to hours.",
+    desc: "Designed automated deployment pipelines reducing release cycles from weeks to hours across multiple teams.",
     tags: ["Jenkins", "Docker", "K8s", "AWS"],
     category: ["DevOps", "Cloud"],
+    num: "05",
   },
   {
     title: "AI-Powered Analytics Dashboard",
-    desc: "Created intelligent dashboards with predictive analytics capabilities for supply chain optimisation.",
+    desc: "Intelligent dashboards with predictive analytics capabilities for supply chain optimisation at enterprise scale.",
     tags: ["React", "Python", "TensorFlow", "D3"],
     category: ["AI", "Full Stack"],
+    num: "06",
   },
 ];
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
-  const { ref, isVisible } = useScrollReveal();
 
   const filtered =
     filter === "All"
@@ -53,66 +58,91 @@ export default function Projects() {
       : projects.filter((p) => p.category.includes(filter));
 
   return (
-    <section id="projects" className="py-28 relative">
-      <div ref={ref} className="container mx-auto px-6">
-        <p className={`text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+    <section id="projects" className="py-32 relative noise">
+      <div className="container mx-auto px-6">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 font-display"
+        >
           Projects
-        </p>
-        <h2 className={`font-display text-4xl md:text-5xl font-bold mb-10 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          Selected <span className="text-gradient">Work</span>
-        </h2>
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 leading-[1.05]"
+        >
+          <span className="font-display">Selected</span>{" "}
+          <span className="font-serif italic text-gradient">Work</span>
+        </motion.h2>
 
-        {/* Filter */}
-        <div className={`flex flex-wrap gap-2 mb-12 transition-all duration-700 delay-200 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        {/* Filters */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap gap-2 mb-14"
+        >
           {categories.map((c) => (
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`text-sm px-4 py-2 rounded-full transition-all duration-200 font-display ${
+              className={`text-sm px-5 py-2.5 rounded-full transition-all duration-300 font-display ${
                 filter === c
-                  ? "bg-foreground text-background"
+                  ? "bg-foreground text-background shadow-lg"
                   : "glass text-muted-foreground hover:text-foreground"
               }`}
             >
               {c}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p, i) => (
-            <article
-              key={p.title}
-              className={`group glass glass-hover rounded-xl p-6 transition-all duration-500 hover:-translate-y-1 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${300 + i * 100}ms` }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="font-display font-semibold text-foreground text-lg leading-tight pr-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((p) => (
+              <motion.article
+                layout
+                key={p.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="group glass border-gradient rounded-2xl p-6 flex flex-col cursor-default"
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <span className="text-4xl font-display font-bold text-muted-foreground/20 group-hover:text-muted-foreground/40 transition-colors">
+                    {p.num}
+                  </span>
+                  <div className="w-8 h-8 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <ArrowUpRight size={14} className="text-foreground" />
+                  </div>
+                </div>
+
+                <h3 className="font-display font-bold text-foreground text-lg leading-tight mb-3">
                   {p.title}
                 </h3>
-                <ExternalLink
-                  size={16}
-                  className="text-muted-foreground group-hover:text-foreground transition-colors mt-1 shrink-0"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                {p.desc}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs px-2 py-1 rounded-full bg-secondary text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                  {p.desc}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs px-3 py-1 rounded-full bg-secondary/80 text-muted-foreground font-display"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

@@ -1,62 +1,101 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
 import { Camera, Code, Cloud, Brain } from "lucide-react";
 
 const highlights = [
-  { icon: Code, label: "Full Stack", desc: "React · Node · Java · C/C++" },
-  { icon: Cloud, label: "Cloud & DevOps", desc: "AWS · Azure · CI/CD · IaC" },
-  { icon: Brain, label: "AI & Data", desc: "ML pipelines · GenAI · Analytics" },
-  { icon: Camera, label: "Photography", desc: "komal-singh.com" },
+  { icon: Code, label: "Full Stack", desc: "React · Node · Java · C/C++", stat: "11+ yrs" },
+  { icon: Cloud, label: "Cloud & DevOps", desc: "AWS · Azure · CI/CD · IaC", stat: "6+ yrs" },
+  { icon: Brain, label: "AI & Data", desc: "ML pipelines · GenAI · Analytics", stat: "3+ yrs" },
+  { icon: Camera, label: "Photography", desc: "komal-singh.com", stat: "Hobby" },
 ];
 
 export default function About() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="about" className="py-28 relative">
-      <div ref={ref} className="container mx-auto px-6">
-        <p className={`text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          About Me
+    <section id="about" className="py-32 relative noise">
+      {/* Decorative side text */}
+      <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden xl:block">
+        <p className="text-xs tracking-[0.4em] text-muted-foreground/30 uppercase rotate-[-90deg] origin-left whitespace-nowrap">
+          About · Experience · Skills
         </p>
-        <h2 className={`font-display text-4xl md:text-5xl font-bold mb-10 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          Architect by trade.<br />
-          <span className="text-gradient">Creator by nature.</span>
-        </h2>
+      </div>
 
-        <div className={`max-w-2xl text-muted-foreground text-lg leading-relaxed mb-14 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <p className="mb-4">
-            I'm a Solution Architect based in London with over 11 years of experience
-            building enterprise-grade software. From embedded systems at Gemalto to
-            leading digital transformation at Publicis Sapient and architecting retail
-            solutions at TCS for Asda — I bring a rare blend of depth and breadth.
-          </p>
-          <p>
-            Outside of code, I'm a passionate photographer — capturing the world through
-            my lens at{" "}
-            <a
-              href="https://komal-singh.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+      <div ref={ref} className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left: Text */}
+          <div>
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 font-display"
             >
-              komal-singh.com
-            </a>.
-          </p>
-        </div>
+              About Me
+            </motion.p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {highlights.map((h, i) => (
-            <div
-              key={h.label}
-              className={`glass glass-hover rounded-xl p-6 text-center transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: `${300 + i * 100}ms` }}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-[1.05]"
             >
-              <h.icon className="mx-auto mb-3 text-foreground" size={28} />
-              <h3 className="font-display font-semibold text-foreground mb-1">{h.label}</h3>
-              <p className="text-xs text-muted-foreground">{h.desc}</p>
-            </div>
-          ))}
+              <span className="font-display">Architect by</span>
+              <br />
+              <span className="font-serif italic text-gradient">trade & passion.</span>
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-muted-foreground text-base leading-relaxed space-y-4"
+            >
+              <p>
+                I'm a Solution Architect based in London with over 11 years building
+                enterprise-grade software. From embedded systems at <span className="text-foreground font-medium">Gemalto/Thales</span> to
+                leading digital transformation at <span className="text-foreground font-medium">Publicis Sapient</span> and architecting
+                retail solutions at <span className="text-foreground font-medium">TCS for Asda</span>.
+              </p>
+              <p>
+                Outside of code, I capture the world through my lens at{" "}
+                <a
+                  href="https://komal-singh.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground transition-all"
+                >
+                  komal-singh.com
+                </a>.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Right: Cards */}
+          <div className="grid grid-cols-2 gap-4">
+            {highlights.map((h, i) => (
+              <motion.div
+                key={h.label}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 * i + 0.3, duration: 0.5 }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="glass border-gradient rounded-2xl p-6 group cursor-default"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <h.icon className="text-foreground" size={20} />
+                  </div>
+                  <span className="text-xs text-muted-foreground font-display">{h.stat}</span>
+                </div>
+                <h3 className="font-display font-semibold text-foreground text-sm mb-1">{h.label}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{h.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

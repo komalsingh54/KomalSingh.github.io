@@ -2,12 +2,22 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
+    period: "Oct 2024 – Present",
+    company: "TCS",
+    client: "Asda Retail (London, UK)",
+    role: "Solution Architect · Tech Lead",
+    tech: ["Solution Architecture", "Cloud", "DevOps", "AI", "React", "Full Stack", "Observability"],
+    highlight: "Handling everything in tech — architecture, cloud, DevOps, AI, and end-to-end delivery for Asda's digital ecosystem",
+    current: true,
+  },
+  {
     period: "Jul 2022 – Sep 2024",
     company: "Publicis Sapient",
     client: "Asda (London, UK)",
     role: "Lead Engineer",
     tech: ["React.js", "Azure ADB2C", "Azure DevOps", "Agile"],
-    highlight: "Led customer authentication & authorization using Azure AD B2C, optimised release cycles with Azure DevOps",
+    highlight: "Led customer authentication & authorization with Azure AD B2C, optimised release cycles with Azure DevOps",
+    current: false,
   },
   {
     period: "Feb 2019 – Jun 2022",
@@ -15,15 +25,17 @@ const experiences = [
     client: "Suncorp Group (Australia) · Falabella (Chile)",
     role: "Tech Lead",
     tech: ["React", "Next.js", "Node.js", "Serverless", "GCP", "ALB"],
-    highlight: "Built scalable Fintech & e-commerce platforms with serverless architecture across two major global clients",
+    highlight: "Built scalable Fintech & e-commerce platforms with serverless architecture for two major global clients",
+    current: false,
   },
   {
     period: "Jul 2017 – Mar 2019",
     company: "To The New",
-    client: "Rhinogram (HIPAA)",
+    client: "Rhinogram (HIPAA-compliant)",
     role: "Senior Full Stack Engineer",
     tech: ["React.js", "Node.js", "Docker", "Kubernetes", "AWS", "Twilio"],
-    highlight: "Built HIPAA-compliant solutions with Twilio, Fusebill payments, analytics dashboards, and RBAC",
+    highlight: "Built HIPAA-compliant platform with Twilio, Fusebill payments, analytics dashboards, and RBAC",
+    current: false,
   },
   {
     period: "Jan 2015 – Jun 2017",
@@ -31,7 +43,8 @@ const experiences = [
     client: null,
     role: "Full Stack Developer",
     tech: ["JavaScript", "Node.js", "React", "Angular", "C/C++", "Java", "AWS", "D3.js"],
-    highlight: "Built Sentinel LDK toolkit, testing frameworks for Sentinel EMS/RMS, and analytics with D3.js & R",
+    highlight: "Built Sentinel LDK toolkit, testing frameworks, and analytics dashboards with D3.js & R",
+    current: false,
   },
 ];
 
@@ -68,7 +81,11 @@ export default function Timeline() {
               className="relative flex mb-16 last:mb-0 group"
             >
               <div className="hidden md:flex flex-col items-center mr-8 shrink-0">
-                <div className="w-3 h-3 rounded-full bg-foreground border-4 border-background ring-2 ring-border z-10 group-hover:ring-foreground/30 transition-all duration-300" />
+                <div className={`w-3 h-3 rounded-full border-4 border-background z-10 transition-all duration-300 ${
+                  exp.current
+                    ? "bg-emerald-400 ring-2 ring-emerald-400/30"
+                    : "bg-foreground ring-2 ring-border group-hover:ring-foreground/30"
+                }`} />
                 {i < experiences.length - 1 && (
                   <div className="w-px flex-1 bg-border mt-2" />
                 )}
@@ -76,17 +93,24 @@ export default function Timeline() {
 
               <motion.div
                 whileHover={{ y: -2 }}
-                className="flex-1 glass border-gradient rounded-2xl p-6 md:p-8 group-hover:bg-[hsl(var(--glass-hover))] transition-all duration-300"
+                className={`flex-1 glass border-gradient rounded-2xl p-6 md:p-8 group-hover:bg-[hsl(var(--glass-hover))] transition-all duration-300 ${
+                  exp.current ? "ring-1 ring-emerald-400/20" : ""
+                }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                   <div>
-                    <h3 className="font-display text-xl font-bold text-foreground">
-                      {exp.company}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-display text-xl font-bold text-foreground">
+                        {exp.company}
+                      </h3>
+                      {exp.current && (
+                        <span className="text-[10px] uppercase tracking-wider bg-emerald-400/10 text-emerald-500 dark:text-emerald-400 px-2 py-0.5 rounded-full font-display font-semibold">
+                          Current
+                        </span>
+                      )}
+                    </div>
                     {exp.client && (
-                      <p className="text-sm text-muted-foreground mt-0.5">
-                        {exp.client}
-                      </p>
+                      <p className="text-sm text-muted-foreground mt-0.5">{exp.client}</p>
                     )}
                     <p className="text-sm text-muted-foreground mt-1">{exp.role}</p>
                   </div>

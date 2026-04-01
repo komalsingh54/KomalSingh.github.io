@@ -2,7 +2,7 @@ import { ArrowDown, FileDown, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+// import profilePhoto from "@/assets/profile-photo.jpg";
 
 const roles = [
   "Solution Architect",

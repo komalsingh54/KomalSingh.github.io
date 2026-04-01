@@ -2,6 +2,7 @@ import { ArrowDown, FileDown, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const roles = [
   "Solution Architect",
@@ -40,31 +41,35 @@ export default function Hero() {
         <motion.div
           animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-foreground/[0.04] blur-3xl"
+          className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-foreground/[0.03] blur-3xl"
         />
-        {/* Thin decorative rings */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-foreground/[0.04] rounded-full animate-spin-slow" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] border border-foreground/[0.03] rounded-full animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "30s" }} />
       </div>
 
-      {/* Noise overlay */}
       <div className="absolute inset-0 noise pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-          {/* Status badge */}
+          {/* Profile photo */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex justify-center mb-10"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center mb-8"
           >
-            <div className="inline-flex items-center gap-2 glass rounded-full px-5 py-2.5">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
-              </span>
-              <span className="text-xs text-muted-foreground tracking-wide font-display">Open to opportunities · London, UK</span>
+            <div className="relative">
+              <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-2 ring-foreground/10 ring-offset-4 ring-offset-background">
+                <img
+                  src={profilePhoto}
+                  alt="Komal Singh"
+                  width={512}
+                  height={512}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Decorative dot */}
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-foreground border-[3px] border-background" />
             </div>
           </motion.div>
 
@@ -73,7 +78,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <h1 className="font-display text-7xl sm:text-8xl md:text-[10rem] font-bold tracking-[-0.04em] leading-[0.85] text-foreground">
                 Komal
@@ -82,7 +87,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
               <h1 className="font-serif italic text-7xl sm:text-8xl md:text-[10rem] font-normal tracking-[-0.02em] leading-[0.85] text-gradient-hero">
                 Singh
@@ -111,7 +116,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Divider line */}
+          {/* Divider */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -119,7 +124,7 @@ export default function Hero() {
             className="w-16 h-px bg-foreground/20 mx-auto mb-10"
           />
 
-          {/* Bio line */}
+          {/* Bio */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,7 +132,7 @@ export default function Hero() {
             className="text-center text-muted-foreground max-w-lg mx-auto mb-12 text-sm md:text-base leading-relaxed"
           >
             10+ years crafting scalable enterprise solutions — from cloud architecture
-            to AI-driven retail platforms.
+            to AI-driven retail platforms. Currently at TCS · London, UK.
           </motion.p>
 
           {/* CTAs */}
@@ -156,7 +161,7 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* Stats bar */}
+          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -183,7 +188,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll hint */}
       <motion.a
         href="#about"
         initial={{ opacity: 0 }}

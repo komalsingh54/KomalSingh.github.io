@@ -39,6 +39,9 @@ const skills = [
 const certifications = [
   "AWS Certified Solutions Architect – Associate",
   "AWS Solutions Architect Professional (Top Gun Academy)",
+  "Salesforce Agentforce Certification",
+  "Salesforce Commerce Cloud Developer",
+  "Salesforce Commerce Cloud Certification",
   "Apache Kafka",
   "Kubernetes",
 ];

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const stats = [
   { icon: Briefcase, value: "10+", label: "Years Experience" },
   { icon: Building2, value: "4", label: "Companies" },
-  { icon: Award, value: "5+", label: "Certifications" },
+  { icon: Award, value: "7+", label: "Certifications" },
   { icon: Code2, value: "25+", label: "Technologies" },
 ];
 
@@ -27,8 +27,8 @@ const skills = [
     items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "RabbitMQ", "Twilio", "Fusebill"],
   },
   {
-    category: "AI & ML",
-    items: ["GenAI", "OpenAI", "LangChain", "RAG", "TensorFlow", "PyTorch", "ML Ops"],
+    category: "AI & Agentic AI",
+    items: ["GenAI", "Agentic AI", "OpenAI", "LangChain", "RAG", "TensorFlow", "PyTorch", "ML Ops", "Salesforce Agentforce"],
   },
   {
     category: "Leadership & Ops",
@@ -39,6 +39,9 @@ const skills = [
 const certifications = [
   "AWS Certified Solutions Architect – Associate",
   "AWS Solutions Architect Professional (Top Gun Academy)",
+  "Salesforce Agentforce Certification",
+  "Salesforce Commerce Cloud Developer",
+  "Salesforce Commerce Cloud Certification",
   "Apache Kafka",
   "Kubernetes",
 ];

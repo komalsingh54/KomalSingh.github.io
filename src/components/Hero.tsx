@@ -2,15 +2,16 @@ import { ArrowDown, FileDown, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+// import profilePhoto from "@/assets/profile-photo.jpg";
 
 const roles = [
   "Solution Architect",
   "Full Stack Developer",
   "Cloud Architect",
   "Tech Lead",
-  "GenAI Engineer",
+  "Agentic AI Engineer",
   "DevOps Expert",
+  "Salesforce Specialist",
 ];
 
 export default function Hero() {
@@ -51,7 +52,7 @@ export default function Hero() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-          {/* Profile photo */}
+          {/* Profile photo - uncomment when ready
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -68,10 +69,10 @@ export default function Hero() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Decorative dot */}
               <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-foreground border-[3px] border-background" />
             </div>
           </motion.div>
+          */}
 
           {/* Name */}
           <div className="text-center mb-8">

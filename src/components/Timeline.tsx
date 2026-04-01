@@ -6,8 +6,8 @@ const experiences = [
     company: "TCS",
     client: "Asda Retail (London, UK)",
     role: "Solution Architect · Tech Lead",
-    tech: ["Solution Architecture", "Cloud", "DevOps", "AI", "React", "Full Stack", "Observability"],
-    highlight: "Handling everything in tech — architecture, cloud, DevOps, AI, and end-to-end delivery for Asda's digital ecosystem",
+    tech: ["Solution Architecture", "Cloud", "DevOps", "Agentic AI", "Salesforce", "React", "Full Stack", "Observability"],
+    highlight: "Handling everything in tech — solution architecture, cloud, DevOps, Agentic AI, Salesforce, and end-to-end delivery for Asda's digital ecosystem",
     current: true,
   },
   {

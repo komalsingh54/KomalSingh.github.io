@@ -2,36 +2,36 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    period: "2024 – Present",
-    company: "TCS",
-    client: "Asda Retail",
-    role: "Solution Architect, Tech Lead",
-    tech: ["AWS", "Azure", "React", "Spring Boot", "Kubernetes", "GenAI", "Observability"],
-    highlight: "Leading digital transformation, cloud migration, and AI integration for UK's largest retailer",
-  },
-  {
-    period: "2019 – 2024",
+    period: "Jul 2022 – Sep 2024",
     company: "Publicis Sapient",
-    client: null,
-    role: "Tech Lead & Full Stack Developer",
-    tech: ["React", "Next.js", "Node.js", "Java", "Docker", "Terraform", "Kafka"],
-    highlight: "Led cross-functional teams building enterprise platforms with micro-frontend architecture",
+    client: "Asda (London, UK)",
+    role: "Lead Engineer",
+    tech: ["React.js", "Azure ADB2C", "Azure DevOps", "Agile"],
+    highlight: "Led customer authentication & authorization using Azure AD B2C, optimised release cycles with Azure DevOps",
   },
   {
-    period: "2017 – 2019",
+    period: "Feb 2019 – Jun 2022",
+    company: "Publicis Sapient",
+    client: "Suncorp Group (Australia) · Falabella (Chile)",
+    role: "Tech Lead",
+    tech: ["React", "Next.js", "Node.js", "Serverless", "GCP", "ALB"],
+    highlight: "Built scalable Fintech & e-commerce platforms with serverless architecture across two major global clients",
+  },
+  {
+    period: "Jul 2017 – Mar 2019",
     company: "To The New",
-    client: null,
-    role: "Senior Full Stack Developer & Cloud Architect",
-    tech: ["React", "Node.js", "AWS", "GraphQL", "MongoDB", "CI/CD"],
-    highlight: "Architected cloud-native solutions and automated deployment pipelines at scale",
+    client: "Rhinogram (HIPAA)",
+    role: "Senior Full Stack Engineer",
+    tech: ["React.js", "Node.js", "Docker", "Kubernetes", "AWS", "Twilio"],
+    highlight: "Built HIPAA-compliant solutions with Twilio, Fusebill payments, analytics dashboards, and RBAC",
   },
   {
-    period: "2015 – 2017",
+    period: "Jan 2015 – Jun 2017",
     company: "Gemalto (Thales)",
     client: null,
     role: "Full Stack Developer",
-    tech: ["React", "Node.js", "Java", "C/C++", "IoT", "Security"],
-    highlight: "Built secure IoT and embedded solutions for device authentication and encryption",
+    tech: ["JavaScript", "Node.js", "React", "Angular", "C/C++", "Java", "AWS", "D3.js"],
+    highlight: "Built Sentinel LDK toolkit, testing frameworks for Sentinel EMS/RMS, and analytics with D3.js & R",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function Timeline() {
         <div className="relative max-w-4xl mx-auto">
           {experiences.map((exp, i) => (
             <motion.div
-              key={exp.company}
+              key={exp.company + exp.period}
               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -85,7 +85,7 @@ export default function Timeline() {
                     </h3>
                     {exp.client && (
                       <p className="text-sm text-muted-foreground mt-0.5">
-                        Client: {exp.client}
+                        {exp.client}
                       </p>
                     )}
                     <p className="text-sm text-muted-foreground mt-1">{exp.role}</p>
@@ -113,6 +113,28 @@ export default function Timeline() {
             </motion.div>
           ))}
         </div>
+
+        {/* Education */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mt-20"
+        >
+          <h3 className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Education</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="glass border-gradient rounded-2xl p-6">
+              <p className="font-display font-bold text-foreground">MCA (Software Engineering)</p>
+              <p className="text-sm text-muted-foreground mt-1">Guru Gobind Singh Indraprastha University</p>
+              <p className="text-xs text-muted-foreground mt-1">2012 – 2015</p>
+            </div>
+            <div className="glass border-gradient rounded-2xl p-6">
+              <p className="font-display font-bold text-foreground">BCA (Computer Science)</p>
+              <p className="text-sm text-muted-foreground mt-1">Jaipur National University</p>
+              <p className="text-xs text-muted-foreground mt-1">2008 – 2011</p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

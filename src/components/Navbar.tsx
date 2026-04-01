@@ -12,7 +12,7 @@ const links = [
 ];
 
 const socials = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/komalsingh54", icon: "in" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/singh-komal/", icon: "in" },
   { label: "GitHub", href: "https://github.com/komalsingh54", icon: "gh" },
 ];
 
@@ -28,7 +28,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  // Track active section
   useEffect(() => {
     const sections = links.map((l) => document.querySelector(l.href));
     const observer = new IntersectionObserver(
@@ -55,7 +54,6 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        {/* Logo */}
         <a href="#home" className="relative group">
           <span className="font-display text-2xl font-bold tracking-tighter text-foreground">
             K
@@ -66,7 +64,6 @@ export default function Navbar() {
           <span className="absolute -bottom-1 left-0 w-full h-px bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>
 
-        {/* Desktop */}
         <ul className="hidden md:flex items-center gap-1">
           {links.map((l) => (
             <li key={l.href}>
@@ -91,7 +88,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right side: socials + theme toggle */}
         <div className="hidden md:flex items-center gap-3">
           {socials.map((s) => (
             <a
@@ -124,7 +120,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile toggle */}
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={toggle}
@@ -143,7 +138,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div

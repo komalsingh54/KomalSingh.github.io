@@ -9,8 +9,9 @@ const roles = [
   "Full Stack Developer",
   "Cloud Architect",
   "Tech Lead",
-  "GenAI Engineer",
+  "Agentic AI Engineer",
   "DevOps Expert",
+  "Salesforce Specialist",
 ];
 
 export default function Hero() {

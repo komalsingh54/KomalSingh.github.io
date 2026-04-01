@@ -1,50 +1,50 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const categories = ["All", "Cloud", "Full Stack", "DevOps", "AI"];
+const categories = ["All", "Cloud", "Full Stack", "DevOps", "Fintech", "E-Commerce"];
 
 const projects = [
   {
-    title: "Retail Digital Transformation",
-    desc: "End-to-end digital transformation for Asda, modernising legacy systems to cloud-native microservices with AI-driven analytics.",
-    tags: ["Cloud", "AI", "React", "DevOps"],
-    category: ["Cloud", "AI", "DevOps"],
+    title: "Asda Digital Transformation",
+    desc: "Led customer authentication & authorization with React.js and Azure AD B2C. Optimised release cycles with Azure DevOps practices for UK's largest retailer.",
+    tags: ["React.js", "Azure ADB2C", "Azure DevOps", "Agile"],
+    category: ["Full Stack", "Cloud", "E-Commerce"],
     num: "01",
   },
   {
-    title: "Enterprise Cloud Migration",
-    desc: "Led migration of monolithic applications to AWS cloud infrastructure, implementing CI/CD pipelines and IaC with Terraform.",
-    tags: ["AWS", "Terraform", "CI/CD", "Docker"],
-    category: ["Cloud", "DevOps"],
+    title: "Suncorp Group – Fintech Platform",
+    desc: "Built scalable Fintech solutions using React, Serverless architecture, and Application Load Balancer for Australia's leading financial services group.",
+    tags: ["React", "Serverless", "ALB", "Fintech"],
+    category: ["Full Stack", "Fintech", "Cloud"],
     num: "02",
   },
   {
-    title: "Customer Experience Platform",
-    desc: "Built a real-time personalisation engine for retail, processing millions of events daily for targeted recommendations.",
-    tags: ["React", "Node.js", "Kafka", "ML"],
-    category: ["Full Stack", "AI"],
+    title: "Falabella – E-Commerce Platform",
+    desc: "Architected high-traffic e-commerce web applications using Next.js, GCP, Node.js and React.js for Latin America's largest retailer.",
+    tags: ["Next.js", "GCP", "Node.js", "React.js"],
+    category: ["Full Stack", "E-Commerce", "Cloud"],
     num: "03",
   },
   {
-    title: "IoT Security Framework",
-    desc: "Developed secure embedded solutions at Gemalto/Thales for IoT device authentication and data encryption.",
-    tags: ["C/C++", "Java", "Security", "IoT"],
-    category: ["Full Stack"],
+    title: "Rhinogram – HIPAA Healthcare",
+    desc: "Built HIPAA-compliant platform with Twilio integration, Fusebill payments, advanced analytics dashboard, and roles & permissions system.",
+    tags: ["React", "Node.js", "Docker", "K8s", "AWS", "Twilio"],
+    category: ["Full Stack", "DevOps", "Cloud"],
     num: "04",
   },
   {
-    title: "DevOps Automation Suite",
-    desc: "Designed automated deployment pipelines reducing release cycles from weeks to hours across multiple teams.",
-    tags: ["Jenkins", "Docker", "K8s", "AWS"],
-    category: ["DevOps", "Cloud"],
+    title: "Sentinel LDK Toolkit",
+    desc: "Developed the Sentinel LDK toolkit with Node PWA-kit, Angular, JavaScript, and C/C++ with hardware interaction for license management at Gemalto.",
+    tags: ["Node.js", "Angular", "C/C++", "PWA"],
+    category: ["Full Stack"],
     num: "05",
   },
   {
-    title: "AI-Powered Analytics Dashboard",
-    desc: "Intelligent dashboards with predictive analytics capabilities for supply chain optimisation at enterprise scale.",
-    tags: ["React", "Python", "TensorFlow", "D3"],
-    category: ["AI", "Full Stack"],
+    title: "Sentinel Analytics Dashboard",
+    desc: "Designed powerful analytics dashboard using Node.js, Angular, React, AWS, D3.js, and R script for data visualisation and insights.",
+    tags: ["D3.js", "React", "Node.js", "AWS", "R"],
+    category: ["Full Stack", "Cloud"],
     num: "06",
   },
 ];
@@ -78,7 +78,6 @@ export default function Projects() {
           <span className="font-serif italic text-gradient">Work</span>
         </motion.h2>
 
-        {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +100,6 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((p) => (

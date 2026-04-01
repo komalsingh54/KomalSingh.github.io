@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
+import { Send, Mail, ExternalLink, ArrowUpRight, Phone } from "lucide-react";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -27,7 +27,6 @@ export default function Contact() {
     <section id="contact" className="py-32 relative noise">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left */}
           <div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -57,7 +56,6 @@ export default function Contact() {
               Have a project in mind or want to discuss opportunities? I'd love to hear from you.
             </motion.p>
 
-            {/* Contact links */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -67,6 +65,7 @@ export default function Contact() {
             >
               {[
                 { label: "Email", value: "komalsingh54@gmail.com", href: "mailto:komalsingh54@gmail.com", icon: Mail },
+                { label: "Location", value: "Canary Wharf, London, UK", href: "#", icon: ExternalLink },
                 { label: "Photography", value: "komal-singh.com", href: "https://komal-singh.com", icon: ExternalLink },
               ].map((link) => (
                 <a
@@ -86,7 +85,6 @@ export default function Contact() {
               ))}
             </motion.div>
 
-            {/* Social links */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -95,8 +93,9 @@ export default function Contact() {
               className="flex gap-3 mt-8"
             >
               {[
-                { label: "LinkedIn", href: "https://linkedin.com/in/komalsingh54" },
+                { label: "LinkedIn", href: "https://www.linkedin.com/in/singh-komal/" },
                 { label: "GitHub", href: "https://github.com/komalsingh54" },
+                { label: "Resume", href: "https://resume.komal-singh.com" },
               ].map((s) => (
                 <a
                   key={s.label}
@@ -111,7 +110,6 @@ export default function Contact() {
             </motion.div>
           </div>
 
-          {/* Right: Form */}
           <motion.form
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

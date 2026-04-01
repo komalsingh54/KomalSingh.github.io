@@ -3,37 +3,44 @@ import { Download, Briefcase, Building2, Award, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { icon: Briefcase, value: "11+", label: "Years Experience" },
+  { icon: Briefcase, value: "10+", label: "Years Experience" },
   { icon: Building2, value: "4", label: "Companies" },
-  { icon: Award, value: "6+", label: "Certifications" },
+  { icon: Award, value: "5+", label: "Certifications" },
   { icon: Code2, value: "25+", label: "Technologies" },
 ];
 
 const skills = [
   {
     category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "React Native", "Flutter", "Micro-frontends", "HTML/CSS", "Tailwind"],
+    items: ["React.js", "Next.js", "Angular", "TypeScript", "JavaScript", "React Native", "Micro-frontends", "D3.js", "Tailwind CSS"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Java", "Spring Boot", "C/C++", "Python", "REST", "GraphQL", "gRPC"],
+    items: ["Node.js", "Java", "Spring Boot", "C/C++", "Python", "REST APIs", "GraphQL", "gRPC", "Serverless"],
   },
   {
     category: "Cloud & DevOps",
-    items: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Helm", "Terraform", "CI/CD"],
+    items: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Helm", "Terraform", "CI/CD", "Azure DevOps"],
   },
   {
     category: "Data & Messaging",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "RabbitMQ", "SQL", "NoSQL"],
+    items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "RabbitMQ", "Twilio", "Fusebill"],
   },
   {
     category: "AI & ML",
     items: ["GenAI", "OpenAI", "LangChain", "RAG", "TensorFlow", "PyTorch", "ML Ops"],
   },
   {
-    category: "Architecture & Ops",
-    items: ["Microservices", "Observability", "Monitoring", "Tracing", "Product Delivery", "Problem Resolution"],
+    category: "Leadership & Ops",
+    items: ["Solution Architecture", "Team Leadership", "Agile", "WCAG Accessibility", "Observability", "HIPAA Compliance", "Webpack"],
   },
+];
+
+const certifications = [
+  "AWS Certified Solutions Architect – Associate",
+  "AWS Solutions Architect Professional (Top Gun Academy)",
+  "Apache Kafka",
+  "Kubernetes",
 ];
 
 export default function Resume() {
@@ -98,7 +105,7 @@ export default function Resume() {
         </div>
 
         {/* Skills */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {skills.map((group, i) => (
             <motion.div
               key={group.category}
@@ -123,6 +130,23 @@ export default function Resume() {
             </motion.div>
           ))}
         </div>
+
+        {/* Certifications */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Certifications</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {certifications.map((cert) => (
+              <div key={cert} className="glass border-gradient rounded-xl px-5 py-4 flex items-center gap-3">
+                <Award size={18} className="text-muted-foreground shrink-0" />
+                <p className="text-sm text-foreground">{cert}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

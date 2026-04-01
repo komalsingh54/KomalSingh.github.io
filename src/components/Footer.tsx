@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 
-const marqueeText = "REACT · NODE · JAVA · AWS · DEVOPS · AI · TYPESCRIPT · DOCKER · KUBERNETES · TERRAFORM · ";
+const marqueeText = "REACT · NODE · JAVA · AWS · AZURE · GCP · KUBERNETES · DOCKER · TERRAFORM · GENAI · NEXT.JS · ";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border relative overflow-hidden">
-      {/* Marquee */}
       <div className="py-6 overflow-hidden opacity-[0.04]">
         <div className="animate-marquee whitespace-nowrap">
           <span className="font-display text-6xl font-bold tracking-tighter">
@@ -21,7 +20,7 @@ export default function Footer() {
           </p>
           <div className="hidden sm:flex gap-4">
             {[
-              { label: "LinkedIn", href: "https://linkedin.com/in/komalsingh54" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/singh-komal/" },
               { label: "GitHub", href: "https://github.com/komalsingh54" },
             ].map((s) => (
               <a

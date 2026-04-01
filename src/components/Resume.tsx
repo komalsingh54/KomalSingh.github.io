@@ -27,8 +27,8 @@ const skills = [
     items: ["PostgreSQL", "MongoDB", "Redis", "Kafka", "RabbitMQ", "Twilio", "Fusebill"],
   },
   {
-    category: "AI & ML",
-    items: ["GenAI", "OpenAI", "LangChain", "RAG", "TensorFlow", "PyTorch", "ML Ops"],
+    category: "AI & Agentic AI",
+    items: ["GenAI", "Agentic AI", "OpenAI", "LangChain", "RAG", "TensorFlow", "PyTorch", "ML Ops", "Salesforce Agentforce"],
   },
   {
     category: "Leadership & Ops",

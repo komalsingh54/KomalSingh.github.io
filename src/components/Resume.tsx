@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const stats = [
   { icon: Briefcase, value: "10+", label: "Years Experience" },
   { icon: Building2, value: "4", label: "Companies" },
-  { icon: Award, value: "5+", label: "Certifications" },
+  { icon: Award, value: "7+", label: "Certifications" },
   { icon: Code2, value: "25+", label: "Technologies" },
 ];
 

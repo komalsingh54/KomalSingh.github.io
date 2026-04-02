@@ -1,29 +1,16 @@
 import { ArrowDown, FileDown, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 // import profilePhoto from "@/assets/profile-photo.jpg";
 
-const roles = [
-  "Solution Architect",
-  "Full Stack Developer",
-  "Cloud Architect",
-  "Tech Lead",
-  "Agentic AI Engineer",
-  "DevOps Expert",
-  "Salesforce Specialist",
+const specialisms = [
+  "Salesforce Commerce Cloud",
+  "Frontend Architecture",
+  "Retail Platforms",
+  "Agentic AI",
 ];
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((i) => (i + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="home"
@@ -51,31 +38,19 @@ export default function Hero() {
       <div className="absolute inset-0 noise pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Profile photo - uncomment when ready
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="flex justify-center mb-8"
+        <div className="max-w-5xl mx-auto">
+          {/* Fixed title */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="text-sm md:text-base tracking-[0.25em] uppercase text-muted-foreground font-display text-center mb-6"
           >
-            <div className="relative">
-              <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-2 ring-foreground/10 ring-offset-4 ring-offset-background">
-                <img
-                  src={profilePhoto}
-                  alt="Komal Singh"
-                  width={512}
-                  height={512}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-foreground border-[3px] border-background" />
-            </div>
-          </motion.div>
-          */}
+            Solution Architect
+          </motion.p>
 
           {/* Name */}
-          <div className="text-center mb-8">
+          <div className="text-center mb-6">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,25 +71,19 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Rotating role */}
+          {/* Specialisation tagline */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="text-center mb-10"
+            className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-10"
           >
-            <div className="h-7 overflow-hidden">
-              <motion.p
-                key={roleIndex}
-                initial={{ y: 28, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -28, opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-base md:text-lg text-muted-foreground tracking-[0.15em] uppercase font-display"
-              >
-                {roles[roleIndex]}
-              </motion.p>
-            </div>
+            {specialisms.map((s, i) => (
+              <span key={s} className="flex items-center text-xs md:text-sm text-muted-foreground tracking-wide font-display">
+                {i > 0 && <span className="mx-2 text-foreground/20">·</span>}
+                {s}
+              </span>
+            ))}
           </motion.div>
 
           {/* Divider */}
@@ -125,15 +94,17 @@ export default function Hero() {
             className="w-16 h-px bg-foreground/20 mx-auto mb-10"
           />
 
-          {/* Bio */}
+          {/* Bio — sharp value prop */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="text-center text-muted-foreground max-w-lg mx-auto mb-12 text-sm md:text-base leading-relaxed"
+            className="text-center text-muted-foreground max-w-xl mx-auto mb-12 text-sm md:text-base leading-relaxed"
           >
-            10+ years crafting scalable enterprise solutions — from cloud architecture
-            to AI-driven retail platforms. Currently at TCS · London, UK.
+            I architect Salesforce Commerce Cloud & enterprise retail platforms
+            that scale. 11+ years turning complex requirements into resilient,
+            cloud-native solutions — from micro-frontends to Agentic AI.
+            <span className="block mt-2 text-foreground/60">Currently at TCS · London, UK</span>
           </motion.p>
 
           {/* CTAs */}
@@ -146,7 +117,7 @@ export default function Hero() {
             <Button asChild size="lg" className="rounded-full font-display h-12 px-8 text-sm shadow-lg">
               <a href="#projects">
                 <FolderOpen className="mr-2" size={18} />
-                View Projects
+                View Case Studies
               </a>
             </Button>
             <Button
@@ -170,9 +141,9 @@ export default function Hero() {
             className="flex items-center justify-center gap-10 mt-20"
           >
             {[
-              { num: "10+", label: "Years" },
+              { num: "11+", label: "Years" },
               { num: "25+", label: "Technologies" },
-              { num: "5+", label: "Certifications" },
+              { num: "7+", label: "Certifications" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}

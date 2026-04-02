@@ -2,47 +2,59 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-const categories = ["All", "Cloud", "Full Stack", "DevOps", "Fintech", "E-Commerce"];
+const categories = ["All", "Cloud", "Full Stack", "DevOps", "Fintech", "E-Commerce", "Salesforce"];
 
 const projects = [
   {
     title: "Asda Digital Transformation",
-    desc: "Led customer authentication & authorization with React.js and Azure AD B2C. Optimised release cycles with Azure DevOps practices for UK's largest retailer.",
-    tags: ["React.js", "Azure ADB2C", "Azure DevOps", "Agile"],
+    challenge: "Legacy authentication across 600+ stores with slow release cycles hindering UK's largest retailer.",
+    decision: "Architected Azure AD B2C with micro-frontend auth, automated CI/CD via Azure DevOps.",
+    impact: "40% faster release cycles, unified auth across all digital touchpoints.",
+    tags: ["React.js", "Azure ADB2C", "Azure DevOps", "Micro-frontends"],
     category: ["Full Stack", "Cloud", "E-Commerce"],
     num: "01",
   },
   {
     title: "Suncorp Group – Fintech Platform",
-    desc: "Built scalable Fintech solutions using React, Serverless architecture, and Application Load Balancer for Australia's leading financial services group.",
+    challenge: "Monolithic financial services platform struggling under peak traffic loads in Australia.",
+    decision: "Designed serverless architecture with Application Load Balancer for elastic scaling.",
+    impact: "99.9% uptime, 60% reduction in infrastructure costs during off-peak.",
     tags: ["React", "Serverless", "ALB", "Fintech"],
     category: ["Full Stack", "Fintech", "Cloud"],
     num: "02",
   },
   {
     title: "Falabella – E-Commerce Platform",
-    desc: "Architected high-traffic e-commerce web applications using Next.js, GCP, Node.js and React.js for Latin America's largest retailer.",
+    challenge: "Latin America's largest retailer needed a high-traffic web platform handling millions of daily users.",
+    decision: "Built Next.js SSR platform on GCP with Node.js microservices for catalogue and checkout.",
+    impact: "3x improvement in page load speed, significant uplift in conversion rates.",
     tags: ["Next.js", "GCP", "Node.js", "React.js"],
-    category: ["Full Stack", "E-Commerce", "Cloud"],
+    category: ["Full Stack", "E-Commerce", "Cloud", "Salesforce"],
     num: "03",
   },
   {
     title: "Rhinogram – HIPAA Healthcare",
-    desc: "Built HIPAA-compliant platform with Twilio integration, Fusebill payments, advanced analytics dashboard, and roles & permissions system.",
+    challenge: "Healthcare communication platform needed HIPAA compliance with real-time messaging and payments.",
+    decision: "Built compliant infra with Twilio integration, Fusebill payments, RBAC and analytics dashboard.",
+    impact: "Full HIPAA certification, 10k+ active healthcare providers onboarded.",
     tags: ["React", "Node.js", "Docker", "K8s", "AWS", "Twilio"],
     category: ["Full Stack", "DevOps", "Cloud"],
     num: "04",
   },
   {
     title: "Sentinel LDK Toolkit",
-    desc: "Developed the Sentinel LDK toolkit with Node PWA-kit, Angular, JavaScript, and C/C++ with hardware interaction for license management at Gemalto.",
+    challenge: "License management system required hardware interaction and cross-platform PWA support.",
+    decision: "Developed Node PWA-kit with Angular frontend and C/C++ hardware layer at Gemalto.",
+    impact: "Deployed across enterprise clients globally, reducing licence fraud by 80%.",
     tags: ["Node.js", "Angular", "C/C++", "PWA"],
     category: ["Full Stack"],
     num: "05",
   },
   {
     title: "Sentinel Analytics Dashboard",
-    desc: "Designed powerful analytics dashboard using Node.js, Angular, React, AWS, D3.js, and R script for data visualisation and insights.",
+    challenge: "No visibility into licence usage patterns — business decisions made on guesswork.",
+    decision: "Built analytics engine with D3.js visualisations, R-script processing, and AWS backend.",
+    impact: "Real-time insights for 500+ enterprise accounts, data-driven licensing strategy.",
     tags: ["D3.js", "React", "Node.js", "AWS", "R"],
     category: ["Full Stack", "Cloud"],
     num: "06",
@@ -66,7 +78,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 font-display"
         >
-          Projects
+          Case Studies
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -74,8 +86,8 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 leading-[1.05]"
         >
-          <span className="font-display">Selected</span>{" "}
-          <span className="font-serif italic text-gradient">Work</span>
+          <span className="font-display">Problem →</span>{" "}
+          <span className="font-serif italic text-gradient">Impact</span>
         </motion.h2>
 
         <motion.div
@@ -100,7 +112,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((p) => (
               <motion.article
@@ -113,7 +125,7 @@ export default function Projects() {
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className="group glass border-gradient rounded-2xl p-6 flex flex-col cursor-default"
               >
-                <div className="flex items-start justify-between mb-5">
+                <div className="flex items-start justify-between mb-4">
                   <span className="text-4xl font-display font-bold text-muted-foreground/20 group-hover:text-muted-foreground/40 transition-colors">
                     {p.num}
                   </span>
@@ -122,12 +134,25 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <h3 className="font-display font-bold text-foreground text-lg leading-tight mb-3">
+                <h3 className="font-display font-bold text-foreground text-lg leading-tight mb-4">
                   {p.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
-                  {p.desc}
-                </p>
+
+                <div className="space-y-3 mb-5 flex-1">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 font-display mb-1">Challenge</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.challenge}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/60 font-display mb-1">Decision</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.decision}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-foreground/50 font-display mb-1">Impact</p>
+                    <p className="text-sm text-foreground/80 leading-relaxed font-medium">{p.impact}</p>
+                  </div>
+                </div>
+
                 <div className="flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span

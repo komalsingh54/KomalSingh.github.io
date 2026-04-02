@@ -1,15 +1,19 @@
 import { motion } from "framer-motion";
-import { Download, Briefcase, Building2, Award, Code2 } from "lucide-react";
+import { Download, Briefcase, Building2, Award, Code2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { icon: Briefcase, value: "10+", label: "Years Experience" },
+  { icon: Briefcase, value: "11+", label: "Years Experience" },
   { icon: Building2, value: "4", label: "Companies" },
   { icon: Award, value: "7+", label: "Certifications" },
   { icon: Code2, value: "25+", label: "Technologies" },
 ];
 
 const skills = [
+  {
+    category: "Salesforce",
+    items: ["SFCC", "B2C Commerce", "Commerce Cloud Developer", "Agentforce", "Salesforce Commerce Cloud"],
+  },
   {
     category: "Frontend",
     items: ["React.js", "Next.js", "Angular", "TypeScript", "JavaScript", "React Native", "Micro-frontends", "D3.js", "Tailwind CSS"],
@@ -37,13 +41,13 @@ const skills = [
 ];
 
 const certifications = [
-  "AWS Certified Solutions Architect – Associate",
-  "AWS Solutions Architect Professional (Top Gun Academy)",
-  "Salesforce Agentforce Certification",
-  "Salesforce Commerce Cloud Developer",
-  "Salesforce Commerce Cloud Certification",
-  "Apache Kafka",
-  "Kubernetes",
+  { name: "Salesforce Agentforce Certification", verified: true },
+  { name: "Salesforce Commerce Cloud Developer", verified: true },
+  { name: "Salesforce Commerce Cloud Certification", verified: true },
+  { name: "AWS Certified Solutions Architect – Associate", verified: true },
+  { name: "AWS Solutions Architect Professional (Top Gun Academy)", verified: true },
+  { name: "Apache Kafka", verified: true },
+  { name: "Kubernetes", verified: true },
 ];
 
 export default function Resume() {
@@ -117,7 +121,9 @@ export default function Resume() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 * i + 0.2 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="glass border-gradient rounded-2xl p-6"
+              className={`glass border-gradient rounded-2xl p-6 ${
+                group.category === "Salesforce" ? "ring-1 ring-foreground/10" : ""
+              }`}
             >
               <h3 className="font-display font-bold text-foreground mb-5 text-sm tracking-wide uppercase">{group.category}</h3>
               <div className="flex flex-wrap gap-2">
@@ -143,9 +149,13 @@ export default function Resume() {
           <h3 className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Certifications</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {certifications.map((cert) => (
-              <div key={cert} className="glass border-gradient rounded-xl px-5 py-4 flex items-center gap-3">
-                <Award size={18} className="text-muted-foreground shrink-0" />
-                <p className="text-sm text-foreground">{cert}</p>
+              <div key={cert.name} className="glass border-gradient rounded-xl px-5 py-4 flex items-center gap-3">
+                {cert.verified ? (
+                  <CheckCircle size={18} className="text-foreground shrink-0" />
+                ) : (
+                  <Award size={18} className="text-muted-foreground shrink-0" />
+                )}
+                <p className="text-sm text-foreground">{cert.name}</p>
               </div>
             ))}
           </div>

@@ -7,10 +7,10 @@ const categories = ["All", "Cloud", "Full Stack", "DevOps", "Fintech", "E-Commer
 const projects = [
   {
     title: "Asda Digital Transformation",
-    challenge: "Legacy authentication across 600+ stores with slow release cycles hindering UK's largest retailer.",
-    decision: "Architected Azure AD B2C with micro-frontend auth, automated CI/CD via Azure DevOps.",
-    impact: "40% faster release cycles, unified auth across all digital touchpoints.",
-    tags: ["React.js", "Azure ADB2C", "Azure DevOps", "Micro-frontends"],
+    challenge: "Asda's retail platform needed secure customer identity, smoother release processes, and stronger technical ownership across multiple digital touchpoints.",
+    decision: "Led full-stack delivery across IAM, frontend, and platform engineering, shaping authentication, release workflows, and broader technical execution across the retail estate.",
+    impact: "Improved delivery speed, strengthened identity foundations, and provided end-to-end technical leadership across key retail initiatives.",
+    tags: ["IAM", "React.js", "Azure DevOps", "Platform Delivery"],
     category: ["Full Stack", "Cloud", "E-Commerce"],
     num: "01",
   },
@@ -86,7 +86,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 leading-[1.05]"
         >
-          <span className="font-display">Problem →</span>{" "}
+          <span className="font-display">Selected</span>{" "}
           <span className="font-serif italic text-gradient">Impact</span>
         </motion.h2>
 

@@ -55,20 +55,23 @@ export default function About() {
               className="text-muted-foreground text-base leading-relaxed space-y-4"
             >
               <p>
-                I'm a Solution Architect based in London with over 11 years of end-to-end
-                project delivery experience. From embedded systems at{" "}
-                <span className="text-foreground font-medium">Gemalto/Thales</span> to leading
-                digital transformation at{" "}
-                <span className="text-foreground font-medium">Publicis Sapient</span> and
-                architecting enterprise retail solutions at{" "}
-                <span className="text-foreground font-medium">TCS for Asda</span> — I bring
-                deep expertise across the full technology stack.
+                I'm a Solution Architect based in London with 11+ years of
+                experience across architecture, delivery, and hands-on
+                engineering. My career has taken me from product engineering at{" "}
+                <span className="text-foreground font-medium">Gemalto/Thales</span> to
+                large-scale transformation work at{" "}
+                <span className="text-foreground font-medium">Publicis Sapient</span>,
+                and now to enterprise retail architecture at{" "}
+                <span className="text-foreground font-medium">TCS for Asda</span>.
               </p>
               <p>
-                My niche is{" "}
+                I work best in roles where strategy and execution need to stay
+                close together. My core strengths are{" "}
                 <span className="text-foreground font-medium">Salesforce Commerce Cloud</span>,{" "}
-                cloud-native architecture, micro-frontends, Agentic AI, and observability
-                — driving product enhancement and problem resolution at scale.
+                cloud-native architecture, IAM, frontend platforms, and the kind
+                of technical leadership that helps teams move from ideas into
+                delivery. I keep AI-related work in view, but I anchor it in
+                practical enterprise outcomes rather than hype.
                 Outside of code, I capture the world through my lens at{" "}
                 <a
                   href="https://komal-singh.com"

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const specialisms = [
   "Salesforce Commerce Cloud",
-  "Frontend Architecture",
+  "Enterprise Architecture",
   "Retail Platforms",
   "Agentic AI",
 ];
@@ -101,9 +101,10 @@ export default function Hero() {
             transition={{ delay: 0.9 }}
             className="text-center text-muted-foreground max-w-xl mx-auto mb-12 text-sm md:text-base leading-relaxed"
           >
-            I architect Salesforce Commerce Cloud & enterprise retail platforms
-            that scale. 11+ years turning complex requirements into resilient,
-            cloud-native solutions — from micro-frontends to Agentic AI.
+            I work across solution architecture, technical delivery, and modern
+            platform transformation. Over 11+ years, I have helped teams turn
+            complex business problems into scalable retail, commerce, and
+            cloud-native solutions, with AI-related work as part of that journey.
             <span className="block mt-2 text-foreground/60">Currently at TCS · London, UK</span>
           </motion.p>
 

@@ -44,8 +44,8 @@ const certifications = [
   { name: "Salesforce Agentforce Certification", verified: true },
   { name: "Salesforce Commerce Cloud Developer", verified: true },
   { name: "Salesforce Commerce Cloud Certification", verified: true },
+    { name: "AWS Solutions Architect Professional", verified: true },
   { name: "AWS Certified Solutions Architect – Associate", verified: true },
-  { name: "AWS Solutions Architect Professional (Top Gun Academy)", verified: true },
   { name: "Apache Kafka", verified: true },
   { name: "Kubernetes", verified: true },
 ];

@@ -14,7 +14,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12"
     >
       {/* Animated grid bg */}
       <div className="absolute inset-0 grid-bg" />
@@ -49,25 +49,43 @@ export default function Hero() {
             Solution Architect
           </motion.p>
 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.28, duration: 0.7 }}
+            className="text-center text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground font-display mb-5"
+          >
+            Salesforce Commerce Cloud · Enterprise Architecture · London, UK
+          </motion.p>
+
           {/* Name */}
           <div className="text-center mb-6">
-            <motion.div
+            <motion.h1
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              aria-label="Komal Singh — Salesforce Solution Architect"
+              className="mb-0"
             >
-              <h1 className="font-display text-7xl sm:text-8xl md:text-[10rem] font-bold tracking-[-0.04em] leading-[0.85] text-foreground">
+              <span className="sr-only">Komal Singh — Salesforce Solution Architect</span>
+              <span
+                aria-hidden="true"
+                className="block font-display text-7xl sm:text-8xl md:text-[10rem] font-bold tracking-[-0.04em] leading-[0.85] text-foreground"
+              >
                 Komal
-              </h1>
-            </motion.div>
+              </span>
+            </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="font-serif italic text-7xl sm:text-8xl md:text-[10rem] font-normal tracking-[-0.02em] leading-[0.85] text-gradient-hero">
+              <p
+                aria-hidden="true"
+                className="font-serif italic text-7xl sm:text-8xl md:text-[10rem] font-normal tracking-[-0.02em] leading-[0.85] text-gradient-hero"
+              >
                 Singh
-              </h1>
+              </p>
             </motion.div>
           </div>
 
@@ -101,10 +119,11 @@ export default function Hero() {
             transition={{ delay: 0.9 }}
             className="text-center text-muted-foreground max-w-xl mx-auto mb-12 text-sm md:text-base leading-relaxed"
           >
-            I work across solution architecture, technical delivery, and modern
-            platform transformation. Over 11+ years, I have helped teams turn
-            complex business problems into scalable retail, commerce, and
-            cloud-native solutions, with AI-related work as part of that journey.
+            I design and deliver enterprise retail and commerce platforms across
+            architecture, engineering leadership, and hands-on full stack
+            execution. Over 11+ years, I have helped teams turn complex business
+            problems into scalable cloud-native solutions, with AI-related work
+            as part of that journey.
             <span className="block mt-2 text-foreground/60">Currently at TCS · London, UK</span>
           </motion.p>
 
@@ -139,7 +158,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="flex items-center justify-center gap-10 mt-20 mb-16"
+            className="flex items-center justify-center gap-10 mt-20 mb-24"
           >
             {[
               { num: "11+", label: "Years" },
@@ -166,7 +185,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         aria-label="Scroll down"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-display">Scroll</span>

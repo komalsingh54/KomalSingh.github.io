@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Linkedin, Github } from "lucide-react";
+import { Menu, X, Sun, Moon, Linkedin, Github, FileDown } from "lucide-react";
 import { useTheme } from "@/hooks/useTheme";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useLocation } from "react-router-dom";
 
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Insights", href: "#insights" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
@@ -18,10 +20,12 @@ const socials = [
 ];
 
 export default function Navbar() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#home");
   const { theme, toggle } = useTheme();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -30,6 +34,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (!isHomePage) {
+      setActive("");
+      return;
+    }
+
     const sections = links.map((l) => document.querySelector(l.href));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -43,7 +52,7 @@ export default function Navbar() {
     );
     sections.forEach((s) => s && observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [isHomePage]);
 
   return (
     <TooltipProvider>
@@ -56,7 +65,7 @@ export default function Navbar() {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between px-6">
-          <a href="#home" className="relative group">
+          <a href={isHomePage ? "#home" : "/#home"} className="relative group">
             <span className="font-display text-2xl font-bold tracking-tighter text-foreground">
               K
               <span className="inline-block transition-transform group-hover:rotate-12 duration-300">
@@ -70,7 +79,7 @@ export default function Navbar() {
             {links.map((l) => (
               <li key={l.href}>
                 <a
-                  href={l.href}
+                  href={isHomePage ? l.href : `/${l.href}`}
                   className={`relative text-sm px-3 py-2 rounded-full transition-all duration-200 ${
                     active === l.href
                       ? "text-foreground"
@@ -91,6 +100,14 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden md:flex items-center gap-2">
+            <a
+              href="/resume-komal-singh.pdf"
+              download
+              className="h-9 px-4 rounded-full bg-foreground text-background text-xs uppercase tracking-[0.2em] font-display flex items-center gap-2 hover:opacity-90 transition-opacity"
+            >
+              <FileDown size={14} />
+              Download CV
+            </a>
             {socials.map((s) => (
               <Tooltip key={s.label}>
                 <TooltipTrigger asChild>
@@ -155,10 +172,20 @@ export default function Navbar() {
             >
               <div className="glass mt-2 mx-4 rounded-2xl p-6">
                 <ul className="flex flex-col gap-1">
+                  <li>
+                    <a
+                      href="/resume-komal-singh.pdf"
+                      download
+                      className="block px-4 py-3 rounded-xl bg-foreground text-background text-sm font-medium"
+                      onClick={() => setOpen(false)}
+                    >
+                      Download CV
+                    </a>
+                  </li>
                   {links.map((l) => (
                     <li key={l.href}>
                       <a
-                        href={l.href}
+                        href={isHomePage ? l.href : `/${l.href}`}
                         className={`block px-4 py-3 rounded-xl transition-colors text-sm ${
                           active === l.href
                             ? "bg-secondary text-foreground font-medium"

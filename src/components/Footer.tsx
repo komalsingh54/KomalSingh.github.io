@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 const marqueeText = "REACT · NODE · JAVA · AWS · AZURE · GCP · KUBERNETES · DOCKER · TERRAFORM · GENAI · NEXT.JS · ";
 
 export default function Footer() {
+  const handleBackToTop = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="border-t border-border relative overflow-hidden">
       <div className="py-6 overflow-hidden opacity-[0.04]">
@@ -36,7 +41,8 @@ export default function Footer() {
           </div>
         </div>
         <a
-          href="#home"
+          href="#top"
+          onClick={handleBackToTop}
           className="text-xs text-muted-foreground hover:text-foreground transition-colors font-display uppercase tracking-wider"
         >
           Back to top ↑

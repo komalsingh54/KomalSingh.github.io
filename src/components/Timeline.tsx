@@ -71,36 +71,46 @@ export default function Timeline() {
         </motion.h2>
 
         <div className="relative max-w-4xl mx-auto">
-          {experiences.map((exp, i) => (
+          {experiences.map((exp, i) => {
+            const recentRole = i < 2;
+            const earlyRole = i >= 3;
+
+            return (
             <motion.div
               key={exp.company + exp.period}
               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="relative flex mb-16 last:mb-0 group"
+              className={`relative flex mb-16 last:mb-0 group ${earlyRole ? "opacity-90" : ""}`}
             >
               <div className="hidden md:flex flex-col items-center mr-8 shrink-0">
                 <div className={`w-3 h-3 rounded-full border-4 border-background z-10 transition-all duration-300 ${
                   exp.current
                     ? "bg-emerald-400 ring-2 ring-emerald-400/30"
-                    : "bg-foreground ring-2 ring-border group-hover:ring-foreground/30"
+                    : recentRole
+                      ? "bg-foreground ring-2 ring-foreground/15"
+                      : "bg-foreground ring-2 ring-border group-hover:ring-foreground/30"
                 }`} />
                 {i < experiences.length - 1 && (
-                  <div className="w-px flex-1 bg-border mt-2" />
+                  <div className={`w-px flex-1 mt-2 ${recentRole ? "bg-foreground/12" : "bg-border"}`} />
                 )}
               </div>
 
               <motion.div
                 whileHover={{ y: -2 }}
                 className={`flex-1 glass border-gradient rounded-2xl p-6 md:p-8 group-hover:bg-[hsl(var(--glass-hover))] transition-all duration-300 ${
-                  exp.current ? "ring-1 ring-emerald-400/20" : ""
+                  exp.current
+                    ? "ring-1 ring-emerald-400/20 md:p-9"
+                    : recentRole
+                      ? "md:p-8"
+                      : "md:p-6"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-display text-xl font-bold text-foreground">
+                      <h3 className={`font-display font-bold text-foreground ${recentRole ? "text-2xl" : "text-xl"}`}>
                         {exp.company}
                       </h3>
                       {exp.current && (
@@ -110,16 +120,16 @@ export default function Timeline() {
                       )}
                     </div>
                     {exp.client && (
-                      <p className="text-sm text-muted-foreground mt-0.5">{exp.client}</p>
+                      <p className={`mt-0.5 ${recentRole ? "text-sm text-foreground/80" : "text-sm text-muted-foreground"}`}>{exp.client}</p>
                     )}
-                    <p className="text-sm text-muted-foreground mt-1">{exp.role}</p>
+                    <p className={`mt-1 ${recentRole ? "text-sm text-foreground font-medium" : "text-sm text-muted-foreground"}`}>{exp.role}</p>
                   </div>
                   <span className="text-xs uppercase tracking-wider text-muted-foreground font-display bg-secondary px-3 py-1 rounded-full whitespace-nowrap self-start">
                     {exp.period}
                   </span>
                 </div>
 
-                <p className="text-sm text-muted-foreground mb-4 italic">
+                <p className={`${recentRole ? "text-[15px] text-foreground/80" : "text-sm text-muted-foreground"} mb-4 italic leading-relaxed`}>
                   "{exp.highlight}"
                 </p>
 
@@ -135,7 +145,7 @@ export default function Timeline() {
                 </div>
               </motion.div>
             </motion.div>
-          ))}
+          )})}
         </div>
 
         {/* Education */}

@@ -138,7 +138,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="flex items-center justify-center gap-10 mt-20"
+            className="flex items-center justify-center gap-10 mt-20 mb-16"
           >
             {[
               { num: "11+", label: "Years" },

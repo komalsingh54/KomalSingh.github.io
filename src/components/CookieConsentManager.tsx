@@ -33,7 +33,7 @@ export default function CookieConsentManager() {
           flipButtons: false,
         },
         preferencesModal: {
-          layout: "box",
+          layout: "bar",
           position: "right",
           equalWeightButtons: false,
           flipButtons: false,
@@ -73,7 +73,7 @@ export default function CookieConsentManager() {
             },
             preferencesModal: {
               title: "Cookie preferences",
-              acceptAllBtn: "Accept analytics",
+              acceptAllBtn: "Allow analytics",
               acceptNecessaryBtn: "Reject",
               savePreferencesBtn: "Save preferences",
               closeIconLabel: "Close",
@@ -81,43 +81,19 @@ export default function CookieConsentManager() {
                 {
                   title: "Your privacy choices",
                   description:
-                    "Only necessary cookies are always active. Analytics stays off unless you enable it.",
+                    "This portfolio keeps cookies to a minimum. Necessary cookies are always on, and analytics stays off unless you enable it.",
                 },
                 {
                   title: "Strictly necessary",
                   linkedCategory: "necessary",
-                  cookieTable: {
-                    headers: {
-                      name: "Name",
-                      domain: "Domain",
-                      desc: "Description",
-                    },
-                    body: [
-                      {
-                        name: "ks_cookie_consent",
-                        domain: window.location.hostname,
-                        desc: "Stores your cookie consent preference.",
-                      },
-                    ],
-                  },
+                  description:
+                    "Stores your consent choice so the site remembers whether analytics is allowed.",
                 },
                 {
                   title: "Analytics",
                   linkedCategory: "analytics",
-                  cookieTable: {
-                    headers: {
-                      name: "Name",
-                      domain: "Domain",
-                      desc: "Description",
-                    },
-                    body: [
-                      {
-                        name: "_ga / _ga_*",
-                        domain: window.location.hostname,
-                        desc: "Google Analytics cookies used to measure visits and page usage.",
-                      },
-                    ],
-                  },
+                  description:
+                    "Uses Google Analytics to understand visits and the pages people find most useful. No advertising or profiling is used on this site.",
                 },
               ],
             },

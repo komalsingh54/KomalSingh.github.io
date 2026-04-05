@@ -166,7 +166,7 @@
 :root {
   --cc-font-family: "Inter", system-ui, sans-serif;
   --cc-modal-border-radius: 1rem;
-  --cc-btn-border-radius: 999px;
+  --cc-btn-border-radius: 0.95rem;
 }
 
 #cc-main {
@@ -241,4 +241,17 @@
 #cc-main .pm__section-desc,
 #cc-main .pm__body {
   line-height: 1.6;
+}
+
+#cc-main .pm--bar {
+  max-width: 26rem;
+}
+
+#cc-main .pm__section {
+  border-radius: 1rem;
+}
+
+#cc-main .pm__section-title,
+#cc-main .pm__service-title {
+  font-weight: 600;
 }

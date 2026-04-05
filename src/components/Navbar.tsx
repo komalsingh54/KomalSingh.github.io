@@ -4,6 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useLocation } from "react-router-dom";
+import { trackNavClick, trackDownload, trackOutbound, trackThemeToggle } from "@/lib/gtag";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -80,6 +81,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={isHomePage ? l.href : `/${l.href}`}
+                  onClick={() => trackNavClick(l.label)}
                   className={`relative text-sm px-3 py-2 rounded-full transition-all duration-200 ${
                     active === l.href
                       ? "text-foreground"
@@ -103,6 +105,7 @@ export default function Navbar() {
             <a
               href="/resume-komal-singh.pdf"
               download
+              onClick={() => trackDownload("nav_download_cv")}
               className="h-9 px-4 rounded-full bg-foreground text-background text-xs uppercase tracking-[0.2em] font-display flex items-center gap-2 hover:opacity-90 transition-opacity"
             >
               <FileDown size={14} />
@@ -125,7 +128,7 @@ export default function Navbar() {
               </Tooltip>
             ))}
             <button
-              onClick={toggle}
+              onClick={() => { toggle(); trackThemeToggle(theme === "dark" ? "light" : "dark"); }}
               className="ml-1 w-9 h-9 rounded-full glass glass-hover flex items-center justify-center text-foreground transition-all duration-300"
               aria-label="Toggle theme"
             >
@@ -145,7 +148,7 @@ export default function Navbar() {
 
           <div className="flex md:hidden items-center gap-2">
             <button
-              onClick={toggle}
+              onClick={() => { toggle(); trackThemeToggle(theme === "dark" ? "light" : "dark"); }}
               className="w-9 h-9 rounded-full glass flex items-center justify-center text-foreground"
               aria-label="Toggle theme"
             >

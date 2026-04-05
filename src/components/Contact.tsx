@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, ExternalLink, ArrowUpRight, Phone } from "lucide-react";
+import { trackContactSubmit, trackOutbound } from "@/lib/gtag";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -19,6 +20,7 @@ export default function Contact() {
     const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
     const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
     window.open(`mailto:komalsingh54@gmail.com?subject=${subject}&body=${body}`);
+    trackContactSubmit();
     toast({ title: "Opening your email client…" });
     setForm({ name: "", email: "", message: "" });
   };
@@ -71,6 +73,7 @@ export default function Contact() {
                 <a
                   key={link.label}
                   href={link.href}
+                  onClick={() => trackOutbound(link.href, link.label)}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 glass border-gradient rounded-xl px-5 py-4 hover:bg-[hsl(var(--glass-hover))] transition-all"
@@ -100,6 +103,7 @@ export default function Contact() {
                 <a
                   key={s.label}
                   href={s.href}
+                  onClick={() => trackOutbound(s.href, s.label)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-display uppercase tracking-wider glass rounded-full px-5 py-2.5 text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--glass-hover))] transition-all"

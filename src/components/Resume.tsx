@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, Briefcase, Building2, Award, Code2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackDownload } from "@/lib/gtag";
 
 const stats = [
   { icon: Briefcase, value: "11+", label: "Years Experience" },
@@ -85,7 +86,7 @@ export default function Resume() {
               size="lg"
               className="mt-6 md:mt-0 rounded-full font-display h-12 px-8"
             >
-              <a href="/resume-komal-singh.pdf" download>
+              <a href="/resume-komal-singh.pdf" download onClick={() => trackDownload("resume_section_cv")}>
                 <Download className="mr-2" size={18} />
                 Download CV
               </a>

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/hooks/useTheme";
 import ScrollToHash from "@/components/ScrollToHash";
+import RouteTracker from "@/components/RouteTracker";
 import Index from "./pages/Index.tsx";
 import InsightDetail from "./pages/InsightDetail.tsx";
 import InsightsIndex from "./pages/InsightsIndex.tsx";
@@ -21,6 +22,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToHash />
+          <RouteTracker />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/insights" element={<InsightsIndex />} />

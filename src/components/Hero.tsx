@@ -1,6 +1,7 @@
 import { ArrowDown, FileDown, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { trackCTA, trackDownload } from "@/lib/gtag";
 // import profilePhoto from "@/assets/profile-photo.jpg";
 
 const specialisms = [
@@ -135,7 +136,7 @@ export default function Hero() {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <Button asChild size="lg" className="rounded-full font-display h-12 px-8 text-sm shadow-lg">
-              <a href="#projects">
+              <a href="#projects" onClick={() => trackCTA("hero_view_case_studies")}>
                 <FolderOpen className="mr-2" size={18} />
                 View Case Studies
               </a>
@@ -146,7 +147,7 @@ export default function Hero() {
               size="lg"
               className="rounded-full font-display h-12 px-8 text-sm border-foreground/15 hover:border-foreground/30 hover:bg-foreground/[0.03]"
             >
-              <a href="#resume">
+              <a href="#resume" onClick={() => trackDownload("hero_download_cv")}>
                 <FileDown className="mr-2" size={18} />
                 Download CV
               </a>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projectCategories, projects } from "@/data/projects";
+import { trackFilter, trackProjectClick } from "@/lib/gtag";
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
@@ -43,7 +44,7 @@ export default function Projects() {
           {projectCategories.map((c) => (
             <button
               key={c}
-              onClick={() => setFilter(c)}
+              onClick={() => { setFilter(c); trackFilter(c); }}
               className={`text-sm px-5 py-2.5 rounded-full transition-all duration-300 font-display ${
                 filter === c
                   ? "bg-foreground text-background shadow-lg"
@@ -70,6 +71,7 @@ export default function Projects() {
               >
                 <Link
                   to={`/projects/${p.slug}`}
+                  onClick={() => trackProjectClick(p.title)}
                   className="flex flex-1 flex-col cursor-pointer"
                 >
                   <div className="flex items-start justify-between mb-4">

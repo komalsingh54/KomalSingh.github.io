@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { openCookiePreferences } from "@/components/CookieConsentManager";
 
 const marqueeText = "REACT · NODE · JAVA · AWS · AZURE · GCP · KUBERNETES · DOCKER · TERRAFORM · GENAI · NEXT.JS · ";
 
@@ -38,6 +40,19 @@ export default function Footer() {
                 {s.label}
               </a>
             ))}
+            <Link
+              to="/privacy-cookies"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy &amp; Cookies
+            </Link>
+            <button
+              type="button"
+              onClick={openCookiePreferences}
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Cookie settings
+            </button>
           </div>
         </div>
         <a

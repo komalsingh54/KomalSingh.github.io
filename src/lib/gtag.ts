@@ -1,5 +1,4 @@
 // Google Analytics 4 — measurement helpers
-// GA_MEASUREMENT_ID is embedded in index.html via gtag snippet
 
 export const GA_MEASUREMENT_ID = "G-K4CSLMQ9Q5";
 
@@ -8,15 +7,44 @@ declare global {
   interface Window {
     gtag: (...args: unknown[]) => void;
     dataLayer: unknown[];
+    __analyticsInitialized?: boolean;
   }
 }
+
+export const initAnalytics = () => {
+  if (typeof window === "undefined" || window.__analyticsInitialized) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function gtag(...args: unknown[]) {
+      window.dataLayer.push(args);
+    };
+
+  window.gtag("js", new Date());
+  window.gtag("config", GA_MEASUREMENT_ID, {
+    anonymize_ip: true,
+    send_page_view: false,
+  });
+
+  if (!document.querySelector(`script[data-ga-id="${GA_MEASUREMENT_ID}"]`)) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    script.dataset.gaId = GA_MEASUREMENT_ID;
+    document.head.appendChild(script);
+  }
+
+  window.__analyticsInitialized = true;
+};
 
 /* ── Page-view (SPA route change) ── */
 export const pageview = (url: string, title?: string) => {
   if (typeof window.gtag !== "function") return;
-  window.gtag("config", GA_MEASUREMENT_ID, {
+  window.gtag("event", "page_view", {
     page_path: url,
     page_title: title,
+    page_location: window.location.href,
   });
 };
 

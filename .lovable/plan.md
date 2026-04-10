@@ -1,41 +1,22 @@
 
 
-## Connect Custom Domain: resume.komal-singh.com
+## New Lovable Project for komal-singh.com
 
-You have two options for connecting your domain:
+You're correct -- this needs to be a **new Lovable project** since it's a separate site with its own domain and GitHub repo.
 
-### Option A: Connect via Lovable (Recommended — simplest)
+### How to proceed
 
-1. Click **Publish** (top right) to publish your project
-2. In the publish dialog, click **Add custom domain**
-3. Enter `resume.komal-singh.com`
-4. Lovable will show you DNS records to add at your domain registrar
-5. At your DNS provider (wherever you manage `komal-singh.com`), add:
-   - **A Record**: Name: `resume` → Value: `185.158.133.1`
-   - **TXT Record**: Name: `_lovable` → Value: (provided by Lovable)
-6. SSL is auto-provisioned once DNS propagates (up to 72 hours)
+1. **Create a new project** in Lovable: Click the **+** button on the sidebar or go to your dashboard and create a new project. Name it something like "komal-singh-photography".
 
-### Option B: GitHub Pages with custom domain
+2. **Describe what you want** in the new project's chat:
+   > "Create a Coming Soon page for komal-singh.com -- a photography portfolio. Full-screen dark/moody aesthetic, 'Komal Singh' name with 'Photography' subtitle, 'Coming Soon' headline with subtle CSS animation, and social links (LinkedIn, resume.komal-singh.com). No email or phone. Responsive. Minimal single-page design."
 
-If you prefer GitHub Pages deployment:
+3. **Connect to your existing GitHub repo** (`komalsingh54/komalsingh.portfolio.io`): Go to **Connectors > GitHub > Connect project** and link it to that repo.
 
-1. The GitHub Actions workflow is already set up — push to `main` triggers deployment
-2. In your GitHub repo → **Settings → Pages** → set Source to **"GitHub Actions"**
-3. Under **Custom domain**, enter `resume.komal-singh.com`
-4. At your DNS provider, add a **CNAME record**: Name: `resume` → Value: `komalsingh54.github.io`
-5. Update `vite.config.ts`: change `base` from `"/portfolio/"` to `"/"`
-6. Update `package.json`: change `homepage` to `"https://resume.komal-singh.com"`
-7. Create a `public/CNAME` file containing `resume.komal-singh.com`
+4. **Set up custom domain**: After publishing, point `komal-singh.com` to the deployed site.
 
-### Files to edit (Option B only)
+### Why a new project?
+This current project is your resume/portfolio at `resume.komal-singh.com`. The photography site is a completely separate domain, repo, and deployment -- so it needs its own Lovable project.
 
-| File | Change |
-|------|--------|
-| `vite.config.ts` | Set `base: "/"` for custom domain |
-| `package.json` | Update `homepage` URL |
-| `public/CNAME` (new) | Add domain name for GitHub Pages |
-
-### Recommendation
-
-**Option A (Lovable)** is zero-config — just add one DNS record and you're live. Option B requires code changes and GitHub repo setup. Which would you prefer?
+Go ahead and create that new project, and paste the prompt above to get started.
 
